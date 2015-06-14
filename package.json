@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/jiumx60rus/Grishygen/issues"
   },
-  "homepage": "https://github.com/jiumx60rus/Grishygen"
+  "homepage": "https://github.com/jiumx60rus/Grishygen",
+  "dependencies": {
+    "async": "^1.2.1",
+    "fs-extra": "^0.19.0",
+    "yamljs": "^0.2.3"
+  }
 }

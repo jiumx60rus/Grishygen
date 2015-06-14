@@ -1,5 +1,4 @@
----
-Title: This is a test 1
+Title: test
 Author: Me
 Description: Whatever
 Date: 2013-08-06 17h
