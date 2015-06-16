@@ -4,6 +4,7 @@ var fs = require("fs-extra");
 var yaml = require("yamljs");
 var async = require("async");
 var marked = require('marked');
+var jade = require('jade');
 
 var Dir = {
     posts: "./posts/",
@@ -12,7 +13,8 @@ var Dir = {
     assets: "./assets/",
     public: "./public/",
     publicPosts: "./public/posts/",
-    publicPages: "./public/pages/"
+    publicPages: "./public/pages/",
+    publicAssets: "./public/assets/"
 };
 
 var Data = {
@@ -48,7 +50,7 @@ function copyFile(CALLBACK) {
             },
             function(callback) {
                 console.log("Copy assets...");
-                fs.copy(Dir.assets, Dir.public, callback);
+                fs.copy(Dir.assets, Dir.publicAssets, callback);
             }
         ],
         function(err) {
@@ -122,6 +124,41 @@ function parsing(CALLBACK) {
 
 }
 
+//  ###                                                   
+// #   # ##### #   # ##### ####    #   ##### #  ###  #   #
+// #     #     ##  # #     #   #  # #    #   # #   # ##  #
+// #  ## ####  # # # ####  #   # #   #   #   # #   # # # #
+// #   # #     # # # #     ####  #####   #   # #   # # # #
+// #   # #     #  ## #     #  #  #   #   #   # #   # #  ##
+//  ###  ##### #   # ##### #   # #   #   #   #  ###  #   #
+
+function generation(CALLBACK) {
+
+    var str = fs.readFileSync(Dir.template + "page.jade", 'utf8')
+    var fn = jade.compile(str, {
+        pretty: true
+    });
+
+    async.each(Data.posts, function(post, callback) {
+
+            fs.rename(Dir.publicPosts + post.url + "/index.md", Dir.publicPosts + post.url + "/index.html", function(err) {
+                if (err) return console.error(err);
+
+                fs.writeFile(Dir.publicPosts + post.url + "/index.html", fn(post), function(err) {
+                    if (err) return console.log(err);
+                });
+            });
+        },
+        function(err) {
+            if (err) return console.error(err);
+
+            console.log("End generation files");
+            console.log("--------------------------------------------------------");
+
+            CALLBACK(null, "generation");
+        });
+}
+
 //  ###                         
 // #   # #####   #   ####  #####
 // #       #    # #  #   #   #  
@@ -137,7 +174,7 @@ function setOptions(CALLBACK) {
             return require('highlight.js').highlightAuto(code).value;
         }
     });
-    
+
     CALLBACK(null, "setOptions");
 }
 
@@ -146,10 +183,10 @@ function start() {
     async.series([
             setOptions,
             copyFile,
-            parsing
+            parsing,
+            generation
         ],
         function(err) {
-            console.log(Data);
             console.log("End!");
         });
 }

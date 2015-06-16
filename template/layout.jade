@@ -1,0 +1,33 @@
+doctype html
+html
+	head
+		include ./includes/header.jade
+	body
+		.navigation: .section-inner
+			ul.main-menu
+				a(href="/"): li.slash Главная
+				a(href="/"): li.slash Проекты
+				a(href="/"): li.slash О сайте
+				a(href="/"): li RSS
+			
+			ul.menu-social
+				li: a(href="/"): i.fa.fa-vk
+				li: a(href="/"): i.fa.fa-facebook
+				li: a(href="/"): i.fa.fa-twitter
+				li: a(href="/"): i.fa.fa-youtube
+
+		canvas(id='star')
+		#bgstar
+
+		.title.section-inner
+			.blog-title: a(href="/") Grishy.ru
+			.blog-subtitle Блог о программировании
+
+		.wrapper.section-inner 
+			block content
+
+	script(src="/assets/main.js")
+	script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js");
+
+
+	script(src="//localhost:35729/livereload.js")
