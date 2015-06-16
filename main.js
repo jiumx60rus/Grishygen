@@ -20,7 +20,6 @@ var Data = {
 };
 
 function PostClass(url, data, md) {
-	console.log(data); //Teset
     this.url = url;
     this.data = data;
     this.MD = md;
@@ -116,11 +115,12 @@ function parsingPosts(CALLBACK) {
                     if (err) return console.error(err);
 
                     // Разделяем на данные о посте и сам текст поста
-                    var divider = data.indexOf("---");
-                    var dataYAML = data.slice(0, divider);
+                    var divider = data.indexOf("---", 2);
+
+                    var dataYAML = data.slice(0, divider); //Тут в начале остается '---', но парсится без ошибок
                     var dataMD = data.slice(divider + 3);
 
-                   	// Добавляем в общий объект со всеми постами
+                    // Добавляем в общий объект со всеми постами
                     Data.posts.push(new PostClass(file, yaml.parse(dataYAML), dataMD));
                     // Переходим к следующему посту
                     callback();
