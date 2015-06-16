@@ -5,6 +5,7 @@ var yaml = require("yamljs");
 var async = require("async");
 var marked = require('marked');
 var jade = require('jade');
+var highlight = require('highlight.js');
 
 var Dir = {
     posts: "./posts/",
@@ -41,24 +42,17 @@ function PostClass(url, data, md) {
 function copyFile(CALLBACK) {
     async.parallel([
             function(callback) {
-                console.log("Copy posts...");
                 fs.copy(Dir.posts, Dir.publicPosts, callback);
             },
             function(callback) {
-                console.log("Copy pages...");
                 fs.copy(Dir.pages, Dir.publicPages, callback);
             },
             function(callback) {
-                console.log("Copy assets...");
                 fs.copy(Dir.assets, Dir.publicAssets, callback);
             }
         ],
         function(err) {
             if (err) return console.error(err);
-
-            console.log("End copy files");
-            console.log("--------------------------------------------------------");
-
             CALLBACK(null, "copy");
         });
 }
@@ -73,8 +67,6 @@ function copyFile(CALLBACK) {
 
 
 function parsingPosts(CALLBACK) {
-    console.log("Parsing posts...");
-
     // Читаем директорию с постами
     fs.readdir(Dir.posts, function(err, dir) {
         if (err) return console.error(err);
@@ -94,32 +86,51 @@ function parsingPosts(CALLBACK) {
                     // Переходим к следующему посту
                     callback();
                 });
-
             },
             function(err) {
                 if (err) return console.error(err);
-
                 CALLBACK(null);
             });
-
     });
+}
 
+function parsingPages(CALLBACK) {
+    // Читаем директорию со страницами
+    fs.readdir(Dir.pages, function(err, dir) {
+        if (err) return console.error(err);
+        // Проходимся по каждой папке
+        async.each(dir, function(file, callback) {
+                // Читаем файл с текстом страницы
+                fs.readFile(Dir.pages + file + "/index.md", "utf8", function(err, data) {
+                    if (err) return console.error(err);
 
+                    // Разделяем на данные о посте и сам текст поста
+                    var divider = data.indexOf("---", 2);
 
+                    var dataYAML = data.slice(0, divider); //Тут в начале остается '---', но парсится без ошибок
+                    var dataMD = data.slice(divider + 3);
+
+                    Data.pages.push(new PostClass(file, yaml.parse(dataYAML), dataMD));
+                    // Переходим к следующей страницы
+                    callback();
+                });
+            },
+            function(err) {
+                if (err) return console.error(err);
+                CALLBACK(null);
+            });
+    });
 }
 
 
 // Парсинг в Data
 function parsing(CALLBACK) {
     async.parallel([
-        parsingPosts
+        parsingPosts,
+        parsingPages
     ], function(err) {
         if (err) return console.error(err);
-
-        console.log("End parsing files");
-        console.log("--------------------------------------------------------");
-
-        CALLBACK(null, "parsing");
+        CALLBACK(null);
     });
 
 }
@@ -151,11 +162,7 @@ function generation(CALLBACK) {
         },
         function(err) {
             if (err) return console.error(err);
-
-            console.log("End generation files");
-            console.log("--------------------------------------------------------");
-
-            CALLBACK(null, "generation");
+            CALLBACK(null);
         });
 }
 
@@ -169,26 +176,26 @@ function generation(CALLBACK) {
 
 
 function setOptions(CALLBACK) {
+    // Подсветка синтаксиса
+    // ```js
+    //     console.log("example");
+    // ```
     marked.setOptions({
-        highlight: function(code) {
-            return require('highlight.js').highlightAuto(code).value;
+        highlight: function(code, lang) {
+            return highlight.highlight(lang, code).value;
         }
     });
 
-    CALLBACK(null, "setOptions");
+    CALLBACK(null);
 }
 
 function start() {
-    console.log("Start!...");
     async.series([
-            setOptions,
-            copyFile,
-            parsing,
-            generation
-        ],
-        function(err) {
-            console.log("End!");
-        });
+        setOptions,
+        copyFile,
+        parsing,
+        generation
+    ]);
 }
 
 start();

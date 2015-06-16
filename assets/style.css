@@ -1800,161 +1800,6 @@
   content: "\f23a";
 }
 
-/*
-
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-
-*/
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #23241f;
-  -webkit-text-size-adjust: none;
-}
-
-.hljs,
-.hljs-tag,
-.css .hljs-rule,
-.css .hljs-value,
-.aspectj .hljs-function,
-.css .hljs-function
-.hljs-preprocessor,
-.hljs-pragma {
-  color: #f8f8f2;
-}
-
-.hljs-strongemphasis,
-.hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2;
-}
-
-.hljs-bullet,
-.hljs-blockquote,
-.hljs-horizontal_rule,
-.hljs-number,
-.hljs-regexp,
-.alias .hljs-keyword,
-.hljs-literal,
-.hljs-hexcolor {
-  color: #ae81ff;
-}
-
-.hljs-tag .hljs-value,
-.hljs-code,
-.hljs-title,
-.css .hljs-class,
-.hljs-class .hljs-title:last-child {
-  color: #a6e22e;
-}
-
-.hljs-link_url {
-  font-size: 80%;
-}
-
-.hljs-strong,
-.hljs-strongemphasis {
-  font-weight: bold;
-}
-
-.hljs-emphasis,
-.hljs-strongemphasis,
-.hljs-class .hljs-title:last-child,
-.hljs-typename {
-  font-style: italic;
-}
-
-.hljs-keyword,
-.ruby .hljs-class .hljs-keyword:first-child,
-.ruby .hljs-function .hljs-keyword,
-.hljs-function,
-.hljs-change,
-.hljs-winutils,
-.hljs-flow,
-.nginx .hljs-title,
-.tex .hljs-special,
-.hljs-header,
-.hljs-attribute,
-.hljs-symbol,
-.hljs-symbol .hljs-string,
-.hljs-tag .hljs-title,
-.hljs-value,
-.alias .hljs-keyword:first-child,
-.css .hljs-tag,
-.css .unit,
-.css .hljs-important {
-  color: #f92672;
-}
-
-.hljs-function .hljs-keyword,
-.hljs-class .hljs-keyword:first-child,
-.hljs-aspect .hljs-keyword:first-child,
-.hljs-constant,
-.hljs-typename,
-.hljs-name,
-.css .hljs-attribute {
-  color: #66d9ef;
-}
-
-.hljs-variable,
-.hljs-params,
-.hljs-class .hljs-title,
-.hljs-aspect .hljs-title {
-  color: #f8f8f2;
-}
-
-.hljs-string,
-.css .hljs-id,
-.hljs-subst,
-.hljs-type,
-.ruby .hljs-class .hljs-parent,
-.hljs-built_in,
-.django .hljs-template_tag,
-.django .hljs-variable,
-.smalltalk .hljs-class,
-.django .hljs-filter .hljs-argument,
-.smalltalk .hljs-localvars,
-.smalltalk .hljs-array,
-.hljs-attr_selector,
-.hljs-pseudo,
-.hljs-addition,
-.hljs-stream,
-.hljs-envvar,
-.apache .hljs-tag,
-.apache .hljs-cbracket,
-.tex .hljs-command,
-.hljs-prompt,
-.hljs-link_label,
-.hljs-link_url {
-  color: #e6db74;
-}
-
-.hljs-comment,
-.hljs-annotation,
-.hljs-decorator,
-.hljs-pi,
-.hljs-doctype,
-.hljs-deletion,
-.hljs-shebang,
-.apache .hljs-sqbracket,
-.tex .hljs-formula {
-  color: #75715e;
-}
-
-.coffeescript .javascript,
-.javascript .xml,
-.tex .hljs-formula,
-.xml .javascript,
-.xml .vbscript,
-.xml .css,
-.xml .hljs-cdata,
-.xml .php,
-.php .xml {
-  opacity: 0.5;
-}
-
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
@@ -2423,3 +2268,121 @@ body{font-family:'Open Sans',sans-serif;background:#090a0f}a{text-decoration:non
   top: 0;
   width: 30%;
 }
+/*
+
+Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
+based on dark.css by Ivan Sagalaev
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #3f3f3f;
+  color: #dcdcdc;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-keyword,
+.hljs-tag,
+.css .hljs-class,
+.css .hljs-id,
+.lisp .hljs-title,
+.nginx .hljs-title,
+.hljs-request,
+.hljs-status,
+.clojure .hljs-attribute {
+  color: #e3ceab;
+}
+
+.django .hljs-template_tag,
+.django .hljs-variable,
+.django .hljs-filter .hljs-argument {
+  color: #dcdcdc;
+}
+
+.hljs-number,
+.hljs-date {
+  color: #8cd0d3;
+}
+
+.dos .hljs-envvar,
+.dos .hljs-stream,
+.hljs-variable,
+.apache .hljs-sqbracket,
+.hljs-name {
+  color: #efdcbc;
+}
+
+.dos .hljs-flow,
+.diff .hljs-change,
+.python .exception,
+.python .hljs-built_in,
+.hljs-literal,
+.tex .hljs-special {
+  color: #efefaf;
+}
+
+.diff .hljs-chunk,
+.hljs-subst {
+  color: #8f8f8f;
+}
+
+.dos .hljs-keyword,
+.hljs-decorator,
+.hljs-title,
+.hljs-type,
+.diff .hljs-header,
+.ruby .hljs-class .hljs-parent,
+.apache .hljs-tag,
+.nginx .hljs-built_in,
+.tex .hljs-command,
+.hljs-prompt {
+  color: #efef8f;
+}
+
+.dos .hljs-winutils,
+.ruby .hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.ruby .hljs-string {
+  color: #dca3a3;
+}
+
+.diff .hljs-deletion,
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-built_in,
+.smalltalk .hljs-class,
+.smalltalk .hljs-localvars,
+.smalltalk .hljs-array,
+.css .hljs-rule .hljs-value,
+.hljs-attr_selector,
+.hljs-pseudo,
+.apache .hljs-cbracket,
+.tex .hljs-formula,
+.coffeescript .hljs-attribute {
+  color: #cc9393;
+}
+
+.hljs-shebang,
+.diff .hljs-addition,
+.hljs-comment,
+.hljs-annotation,
+.hljs-pi,
+.hljs-doctype {
+  color: #7f9f7f;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
+
