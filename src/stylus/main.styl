@@ -1,0 +1,196 @@
+@import 'nib'
+
+body
+	font-family 'Open Sans', sans-serif
+	background #090a0f
+
+a
+	text-decoration none
+
+.section-inner
+	width 1280px
+	max-width 90%
+	margin 0 auto	
+	position relative
+
+// Шапка
+.navigation
+	width 100%
+	background #1d1d1d
+	
+.main-menu
+	margin 0
+	list-style none
+	padding 20px
+	padding-left 0
+	
+	li
+		display inline
+		position relative
+		transition-duration 0.3s
+		
+	a
+		font-size 1.1em
+		color #C5C5C5
+		padding 25px
+		
+		:hover
+			cursor pointer
+			color #fff
+		
+.slash:before
+	content "/"
+	display block
+	position absolute
+	right 0
+	top 50%
+	margin-top -9px
+	margin-right -24px
+	font-size 18px
+	color #444
+	font-weight 300
+	z-index 1000
+	
+.menu-social
+	position absolute
+	right 0
+	top 50%
+	margin-top -18px
+	list-style none
+	
+	li
+		float left
+		margin-left 5px
+		margin-right 5px
+		text-align center
+		
+		:hover
+				background #ca2017
+		
+		a
+			display block
+			width 36px
+			height 36px
+			background #333
+			color #fff
+			border-radius 999px
+			position relative
+			transition-duration 0.3s
+			
+			i
+				margin-top 9px
+// end header
+
+// Title
+#star
+	background radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)
+	width 100%
+	position absolute
+	top 0
+	right 0
+	left 0
+	z-index -2
+
+#bgstar
+	width 100%
+	// Двигается вместе с экраном на планшете
+	// height 100% //canvas.height = $(window).height()
+	background linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(7,8,12,0.1) 80%,rgba(9,10,15,1) 100%)
+	position absolute
+	top 0
+	left 0
+	z-index -1
+
+.title
+	text-align center
+	padding 60px 0
+	color #fff
+	
+.blog-title
+	a
+		font-weight 900
+		font-size 3em
+		color #fff
+		transition-duration 0.3s
+
+.blog-subtitle
+	font-size 1.3em
+	
+	@media all and (max-width: 500px)
+		display none
+
+// Title end
+
+// content
+.post
+	margin 1%
+	background #fff
+	width 48%
+	float left
+	border-bottom-right-radius 3px
+	border-bottom-left-radius 3px
+	img
+		width 100%
+		
+	a:hover
+		img
+			transform translateZ(0)
+			transition-duration 0.3s
+			-webkit-filter brightness(.8)
+			
+	@media all and (max-width: 900px)
+		width 98%
+			
+.entryHeader
+	h1
+		margin 0
+		color: #222;
+		font-size: 1.6em;
+		line-height: 120%;
+		font-weight: 700;
+		
+		@media all and (max-width: 500px)
+			font-size: 1.2em;
+		
+	:hover
+		transition-duration 0.3s
+		color: #676767
+  
+.entryBox
+	padding 4%
+	padding-top 0
+	padding-bottom 1%
+	
+// .entryMeta
+// 	border-top: 2px solid #eee;
+// 	margin-top 10px
+// 	padding-top 10px
+	
+// 	a
+// 		margin-left 5px
+// 		font-size .9em
+// 		padding 2px
+// 		color #222;
+// 		text-transform uppercase
+// 		border-radius: 3px;
+// 		background: #EBEBEB
+
+// .entryMeta a:hover
+// 	transition-duration 0.3s
+// 	background: #DBDBDB
+
+.category
+	position relative
+	top -36px
+	background rgba(9, 10, 15, 0.7)
+	padding 10px 15px
+	color white
+	font-size 14px
+	font-weight 600
+	text-transform uppercase
+	
+.category:hover
+	transition-duration 0.3s
+	background rgba(9, 10, 15, 1)
+	
+// end content

@@ -1,0 +1,39 @@
+.blog-title > a {
+  letter-spacing: 0;
+}
+
+.blog-title > a:hover,
+.blog-title > a:active {
+  letter-spacing: 4px;
+}
+
+.blog-title > a:after,
+.blog-title > a:before {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  -webkit-transition: all 280ms ease-in-out;
+          transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.blog-title > a:hover:after,
+.blog-title > a:hover:before {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-color: #fff;
+  -webkit-transition: width 350ms ease-in-out;
+          transition: width 350ms ease-in-out;
+  width: 30%;
+}
+
+.blog-title > a:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 30%;
+}
